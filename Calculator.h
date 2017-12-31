@@ -1,39 +1,24 @@
+#include <vector>
+#include <string>
+using namespace std;
 #ifndef cal
 #define cal
 
-void firstrun()
+void firstrun();
 // Promises: Outputs version number and current executable
 
-void menu()
+void menu();
 /* Promises: Manages interface with user and runs in a loop
              decides which mathematical operation to run and calls
              the correct function                                    */
 
-vector<double> readinput()
+void readinput();
 /* Requires: User summation input
     Promises: vector of doubles with correct signs */
 
-int summation(vector<double> x,int beg,int end)
+void sum(vector<double> x);
 /* Requires: Vector of numbers
    Promises: Sum of vector of numbers */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
