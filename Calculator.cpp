@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <Calculator.h>
+#include "Calculator.h"
 
 int main()
 {
@@ -24,35 +24,45 @@ void menu()
     readinput();
   }
 }
+
 void readinput()
 {
 	string v;
 	vector<double> n;
 	int val = 1;
-	int m = 0;
-	getline(cin, string& v);
-	for(int i = 0; v.size() > i; i++)
+	int m = 1;
+  int temp=0;
+	getline(cin, v);
+  int k=v.size();
+	for(int i = 0; i<k; i++)
 	{
-		if( (v.at(i) <= '9' || v.at(i) <= '0'))
+    if(v.at(i)=='-')
+    {
+      val=-1;
+      continue;
+      m++;
+    }
+    if(v.at(i)=='+')
+    {
+      val=1;
+      continue;
+      m++;
+    }
+		if( (v.at(i) <= '9' && v.at(i) >= '0'))
 		{
-			if( i >= 1 && v.at(i-1) == '-')
-				{
-					val*=-1;
-				}
-			n.at(m) = (v.at(i))*val;
-			m++:
+      n.push_back((v.at(i)-'0')*val);
 		}
-	summation(v,0,m);
-	
+  }
+	sum(n);
 }
 
-
-void summation(vector<double> x,int beg,int end)
+void sum(vector<double> x)
 {
-	int sum = 0;
-	for (int i = 0; x.size() > i; i++)
+  int k=x.size();
+	double sum = 0;
+	for (int i = 0; i<k; i++)
 	{
 		sum += x.at(i);
 	}
-	cout<< sum;
+	cout<< sum<<endl;
 }
