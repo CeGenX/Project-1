@@ -30,28 +30,40 @@ void readinput()
 	string v;
 	vector<double> n;
 	int val = 1;
-	int m = 1;
-  int temp=0;
+	int m = 0;
+  int j= 0;
+  int i=0;
+  int q=0;
 	getline(cin, v);
+  v.push_back('+');
   int k=v.size();
-	for(int i = 0; i<k; i++)
+  n.resize(k);
+	for(i = 0; i<k; i++)
 	{
-    if(v.at(i)=='-')
+    if(isdigit(v.at(i)))
     {
-      val=-1;
-      continue;
-      m++;
+      j++;
     }
-    if(v.at(i)=='+')
+    else
     {
-      val=1;
-      continue;
+      q=j;
+      while(q)
+      {
+          n.at(m)+=(v.at(i-q)-'0')*pow(10,q-1);
+          q--;
+      }
+      n.at(m)=n.at(m)*val;
+      if(v.at(i)=='+')
+      {
+        val=1;
+      }
+      if(v.at(i)=='-')
+      {
+        val=-1;
+      }
       m++;
+      j=0;
     }
-		if( (v.at(i) <= '9' && v.at(i) >= '0'))
-		{
-      n.push_back((v.at(i)-'0')*val);
-		}
   }
 	sum(n);
 }
